@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import './style/app.scss';
+import Routes from './Routes';
+import { BrowserRouter } from 'react-router-dom';
+import ScrollToTop from './utils/ScrollToTop';
+import InitTilt from './js/tilt';
+import InitSr from './js/sr';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+  render() {
+    return (
+        <BrowserRouter basename="/">
+          <ScrollToTop>
+            <InitSr/>
+            <InitTilt/>
+            <Routes {...this.props}/>
+          </ScrollToTop>
+        </BrowserRouter>
+    );
+  }
 }
 
 export default App;
